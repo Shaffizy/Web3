@@ -1,0 +1,161 @@
+/* --- Base Styles --- */
+.about-bottom {
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden; /* Prevents scrollbars during scaling */
+}
+
+/* The "Canvas" */
+.div-block {
+  width: 1240px; /* Base width */
+  height: 786px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Prevents the container itself from squishing */
+  transition: transform 0.2s ease-out;
+}
+
+.shard-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.shard-wrapper svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Desktop Positioning (Remains Absolute) */
+.top-left-block { width: 571px; inset: 0% auto auto 0%; z-index: 2; }
+.top-right-block { width: 679px; inset: 0% 0% auto auto; }
+.bottom-left-block { width: 679px; inset: auto auto 0% 0%; }
+.bottom-right-block-1 { width: 595px; inset: auto 0% 0% auto; }
+.bottom-right-block-2 { width: 140px; inset: auto 0% 20px auto; z-index: 1; }
+
+.middle-block {
+  background-color: #0d0d0d;
+  border-radius: 16px;
+  width: 216px;
+  height: 216px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.middle-block img { width: 120px; height: auto; }
+
+.text-content {
+  position: absolute;
+    top: 50%;
+  padding: 45px;
+  color: #a0a0a0;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 480px;
+  pointer-events: none;
+}
+.image{
+    filter: brightness(0.3);
+}
+.text-content.tr {
+    top: 60px;
+    bottom: 30px;
+    right: 80px;
+    width: 70%;
+    text-align: center;
+    opacity: 1;
+    font-size: 3rem;
+    line-height: 3rem;
+    font-weight: 600;
+    background: linear-gradient(
+        90deg,
+        var(--primary-color) 0%,
+        #ffffff 50%,
+        var(--secondary-color) 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+        max-width: none;
+}
+.shard {
+    position: absolute;
+    background: var(--card);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    box-sizing: border-box;
+    transition: filter 0.3s ease;
+}
+.shard h2 { margin: 0; 
+    font-size: 1.6rem; 
+    color: var(--white-color);
+    width: 354px;
+}
+.shard p { color: #888; 
+    font-size: 1rem; 
+    line-height: 1.5; 
+    margin-top: 10px; 
+    width: 472px;
+}
+
+.btn {
+    background: white;
+    color: black;
+    padding: 17px 27px;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 20px;
+    width: fit-content;
+}
+/* --- THE SCALING MAGIC --- */
+
+/* For Laptops/Tablets (around 1240px to 1000px) */
+@media (max-width: 1280px) {
+  .div-block {
+    transform: scale(0.85);
+  }
+}
+
+/* For Small Tablets (around 1000px to 768px) */
+@media (max-width: 1024px) {
+  .div-block {
+    transform: scale(0.7);
+  }
+}
+
+/* For Large Phones (768px to 480px) */
+@media (max-width: 768px) {
+  .about-bottom{
+    height: 450px;
+  }
+  .div-block {
+    transform: scale(0.4);
+  }
+}
+
+/* For Small Phones (Under 480px) */
+@media (max-width: 480px) {
+  .div-block {
+    transform: scale(0.30); /* Shrinks the entire puzzle to fit phone width */
+  }
+  .about-bottom {
+      height: 300px; /* Optional: reduce parent height to avoid huge empty spaces */
+  }
+}

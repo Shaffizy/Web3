@@ -1,0 +1,21 @@
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/geist/400.css');
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/geist/700.css');
+:root {
+    --font-base: 'Geist', sans-serif;
+    --primary-color: #0D0D0D;
+    --secondary-color: #313131;
+    --black-color: #0A0A0A;
+    --border: #222222;
+    --lightGray-color: #777676;
+    --gray-color: #616161;
+    --footer-gray: #676767;
+    --white-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  font-family: var(--font-base);
+}

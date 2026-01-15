@@ -1,0 +1,291 @@
+:root {
+  --bg-black: #050505;
+  --card-bg: #0c0c0c;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-grey: #a8a8a8;
+  --accent-white: #ffffff;
+}
+
+.services-section {
+  background-color: transparent;
+  padding: 0px 5%;
+  min-height: fit-content;
+  color: var(--accent-white);
+}
+
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* TABS NAVIGATION */
+/* Tab Menu */
+.tabs-menu-2 {
+  width: 70%;
+  height: 62px;
+  margin: 0 auto ;
+  display: flex;
+  border-bottom: 0.5px solid #3c3c3c;
+}
+
+.tab-link {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--gray-color);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tab-link:hover {
+  color: var(--main-white);
+  border-bottom: 0.6px solid #777;
+  background-image: radial-gradient(circle farthest-side at 50% 300%, #5f5f5f, transparent);
+}
+
+/* Active Tab Style from your code */
+.tab-link.w--current {
+  color: var(--main-white);
+  background-image: radial-gradient(circle farthest-side at 50% 300%, #5f5f5f, transparent);
+  border: 0.5px solid #000;
+  border-bottom: 1px solid #fff; /* Highlight bottom border */
+}
+/* GRID LAYOUT */
+.div-block-3 {
+  display: grid;
+  padding: 40px;
+  grid-template-columns: repeat(4, 2fr);
+  grid-gap: 20px;
+  height: fit-content;
+}
+
+/* MAIN HEADER CARD (The one with "Book a Call") */
+.div-block-6 {
+  grid-column: span 1;
+  grid-row: span 2; /* Makes it taller like the screenshot */
+  background: linear-gradient(135deg, #111 0%, #080808 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  height: 426px;
+}
+
+/* The subtle dots/texture in the background of the main card */
+.div-block-6::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+}
+
+.text-block-10 {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 600;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+.text-block-11 {
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 300;
+  color: var(--text-grey);
+}
+
+.link-book {
+  background: #ffffff;
+  color: #000;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s ease;
+  z-index: 1;
+
+    box-shadow: 0px 20px 180.2px 35px rgba(255, 255, 255, 0.21), inset 0px -6px 6.3px rgba(66, 66, 66, 0.66);
+    border-radius: 8px;
+
+    transition: 
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.link-book:hover {
+  transform: scale(1.02);
+}
+
+/* SERVICE CARDS */
+.card-services {
+    position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow: hidden;
+}
+.card-services::after {
+  content: '';
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    var(--gray-color) 20%,
+    transparent 70%
+  );
+  top: 60%;
+  left: 5%;
+
+  filter: blur(40px);
+  opacity: 0.5;
+  z-index: 0;
+}
+.card-services:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.div-block-4 img {
+  width: 40px;
+  height: 40px;
+  background: var(--card-bg);
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 
+              0 0 1px rgba(255, 255, 255, 0.1);
+  
+  transition: all 0.3s ease;
+  display: block; /* Ensures shadow renders correctly */
+}
+
+.text-block-8 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent-white);
+  line-height: 1.3;
+  padding-bottom: 4px;
+}
+
+.text-block-9 {
+  font-size: 14px;
+  color: var(--lightGray-color);
+  line-height: 1.6;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 1025px) {
+  .div-block-3 { grid-template-columns: repeat(3, 1fr); }
+  .div-block-4 { grid-column: span 1; grid-row: span 1; }
+  .div-block-6 { grid-row: span 3; }
+}
+
+@media (max-width: 850px) {
+  .div-block-3 { grid-template-columns: repeat(2, 1fr); }
+  .div-block-6 { grid-row: span 2; }
+  .tabs-menu { gap: 20px; overflow-x: auto; justify-content: flex-start; }
+}
+
+@media (max-width: 550px) {
+  .services-section {
+    padding: 40px 15px; /* Reduce outer padding to save horizontal space */
+  }
+
+  /* 1. Stack the grid to 1 column for readability */
+  .div-block-3 { 
+    padding: 20px;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 16px;
+  }
+
+  /* 2. Reset the Hero Card spanning */
+  .div-block-6 { 
+    grid-column: span 2;
+    grid-row: span 1; /* Reset height spanning so it doesn't look overly long */
+    height: auto;    /* Allow content to define height */
+    min-height: 320px;
+    padding: 20px;
+  }
+
+  /* 3. Scale down Typography */
+  .text-block-10 {
+    font-size: 20px; /* Smaller heading for mobile */
+  }
+
+  .text-block-8 {
+    font-size: 15px; /* Slightly smaller card titles */
+  }
+
+  .text-block-9 {
+    font-size: 12px; /* Compact description text */
+  }
+  .tab-link {
+    font-size: 10px; /* Slightly smaller tab text */
+  }
+  /* 4. Improve Tab Menu Navigation */
+  .tabs-menu { 
+    gap: 15px; 
+    justify-content: flex-start;
+    overflow-x: scroll; 
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px; /* Space for the scrollbar if visible */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    font-size: 10px;
+}
+
+  .tabs-menu::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+  }
+
+
+  /* 5. Adjust Buttons and Icons */
+  .link-book {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .div-block-4 img {
+    width: 28px;
+    height: 28px;
+  }
+  .services-section{
+    padding: 0px;
+  }
+  .tab-link:hover {
+    background-image: radial-gradient(
+    50% 80% at 50% 80%, 
+    rgba(95, 95, 95, 0.4) 0%, 
+    transparent 100%);
+ 
+  }
+
+    /* Active Tab Style from your code */
+  .tab-link.w--current {
+    background-image: radial-gradient(
+    50% 80% at 50% 80%, 
+    rgba(95, 95, 95, 0.4) 0%, 
+    transparent 100%)
+   }
+}

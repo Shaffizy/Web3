@@ -1,0 +1,204 @@
+/* =========================================================
+   Container Logic: 80% Desktop → 100% Tablet
+========================================================= */
+
+.Case {
+  margin: 100px auto;
+  position: relative;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 991px) {
+  .Case {
+    width: 100%;
+    padding: 0 20px;
+    margin: auto;
+  }
+}
+
+
+/* =========================================================
+   Slider Wrapper
+========================================================= */
+
+.case-slider-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+@media (max-width: 1025px) {
+  .case-slider-wrapper {
+    margin-left: 40px;
+  }
+}
+
+@media (max-width: 769px) {
+  .case-slider-wrapper {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 321px) {
+  .case-slider-wrapper {
+    margin-right: 20px;
+  }
+}
+
+
+/* =========================================================
+   Floating Navigation Arrows
+========================================================= */
+
+.slider-navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+  transform: translateY(-50%);
+}
+
+.nav-arrow {
+  pointer-events: auto;
+  width: 45px;
+  height: 45px;
+  background: #0d0d0d;
+  border: 0.5px solid #3d3d3d;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.nav-arrow:hover {
+  background: #1a1a1a;
+  border-color: #ffffff;
+}
+
+@media (max-width: 1200px) {
+  .slider-navigation {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   Pagination Dots
+========================================================= */
+
+.pagination-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #333;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dot.active {
+  width: 28px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   Project Grid (Card Track)
+========================================================= */
+
+.project-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 30px;
+  width: 100%;
+  position: relative;
+  overflow: none;
+  scroll-behavior: smooth;
+
+  /* Hide scrollbars */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.project-grid::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .project-grid {
+    gap: 20px;
+  }
+}
+
+
+/* =========================================================
+   Project Card
+========================================================= */
+
+.project-card {
+  flex: 0 0 clamp(320px, 45vw, 494px);
+  scroll-snap-align: center;
+}
+
+
+/* =========================================================
+   Masked Slider Container
+========================================================= */
+
+.project-slider-container {
+  width: 100%;
+  overflow: hidden;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 30%,
+    black 50%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 50%,
+    black 70%,
+    transparent 100%
+  );
+}
+
+
+/* =========================================================
+   Small Screens
+========================================================= */
+
+@media (max-width: 466px) {
+  .project-card {
+    flex: 0 0 clamp(100%, 45vw, 494px);
+    scroll-snap-align: center;
+  }
+
+  .project-slider-container {
+    mask-image: none;
+
+    -webkit-mask-image: none;
+  }
+}

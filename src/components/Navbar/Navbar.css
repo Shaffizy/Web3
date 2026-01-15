@@ -1,0 +1,206 @@
+/* Navbar and Logo CSS */
+.app__navbar {
+  width: 90%;
+  height: 3.75rem;
+  font-family: var(--font-base);
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.1); /* black with 70% opacity */
+  border: 0.4px solid var(--border);
+  border-radius: 1rem;
+  padding: 0.2rem 2rem;
+  margin: 1rem auto;
+  backdrop-filter: blur(2px); /* optional: adds a frosted glass effect */
+}
+
+.app__navbar-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.app__navbar-logo img {
+  width: 34px;
+  height: 30px;
+}
+@media screen and (min-width: 20000px) {
+  .app__navbar{
+    padding: 0.1rem 0.1rem;
+  }
+  .app__navbar-logo img {
+    width: 60px;
+    height: 40px;
+  }
+}
+
+
+/* Links CSS */
+.app__navbar-links {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+.app__navbar-links li {
+  margin: 0 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.app__navbar-links li a {
+  color: var(--gray-color);
+  text-decoration: none;
+  flex-direction: column;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0;
+}
+.app__navbar-links li a:hover {
+  color: var(--white-color);
+}
+@media screen and (max-width: 900px) {
+  .app__navbar-links {
+    display: none;
+  }
+}
+
+
+/* Button CSS */
+.app__navbar-button {
+  display: flex;
+  width: 7.25rem;
+  height: 2.1875rem;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border-radius: 0.5rem;
+  border: 0.0375rem solid #313131;
+  background-color: #111111;
+  opacity: 1;
+  cursor: pointer;
+
+  transition: 
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+.app__navbar-button:hover {
+  background-color: #1a1a1a;
+  border-color: #4a4a4a;
+  transform: translateY(-0.0625rem); /* subtle lift */
+}
+.app__navbar-button span {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--white-color);
+
+  transition: color 0.2s ease;
+}
+.app__navbar-button:hover span {
+  color: #ffffff;
+}
+@media screen and (max-width: 48rem) {
+  .app__navbar-button {
+    display: none;
+  }
+}
+
+
+
+
+/* Menu CSS */
+.app__navbar-menu {
+  position: relative; /* or absolute/fixed */
+  z-index: 9999;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  position: relative;
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+}
+.app__navbar-menu svg {
+  width: 70%;
+  height: 70%;
+  color: var(--white-color);
+}
+.app__navbar-menu div {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -1rem;
+  z-index: 1;
+  padding: 0.2rem;
+  width: 50%;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+  background-color: #0A0A0A;
+  box-shadow: 0px 0px 0px rgba(168, 168, 168, 0.15);
+}
+.app__navbar-menu div svg {
+  width: 35px;
+  height: 35px;
+  color: var(--secondary-color);
+  margin: 0.5rem auto;
+}
+.app__navbar-menu div ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.app__navbar-menu div ul li {
+  margin: 1rem;
+}
+.app__navbar-menu div ul li a {
+  color: var(--gray-color);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+.app__navbar-menu-button{
+  display: flex;
+  width: 7.25rem;
+  height: 2.1875rem;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border-radius: 0.5rem;
+  border: 0.0375rem solid #313131;
+  background-color: #111111;
+  opacity: 1;
+  cursor: pointer;
+  transition: 
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+@media screen and (min-width: 900px) {
+  .app__navbar-menu div {
+    display: none;
+  }
+
+  .app__navbar-menu {
+    display: none;
+  }
+}

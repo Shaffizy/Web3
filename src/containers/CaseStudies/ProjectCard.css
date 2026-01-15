@@ -1,0 +1,279 @@
+/* =========================================================
+   Slider Container
+========================================================= */
+
+.project-slider-container {
+  width: 100%;
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 991px) {
+  .project-slider-container {
+    width: 100%;
+    padding: 0 2%;
+  }
+}
+
+
+/* =========================================================
+   Project Card
+========================================================= */
+
+.project-card {
+  width: clamp(340px, 40vw, 494px);
+  min-height: 602px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  background: radial-gradient(
+      52.47% 66.96% at 50.13% 107.44%,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    #0d0d0d;
+
+  border: 0.5px solid #3d3d3d;
+  border-radius: 16px;
+}
+
+
+/* =========================================================
+   Card Image
+========================================================= */
+
+.card-image-container {
+  width: 100%;
+  height: 234px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   Card Content Layout
+========================================================= */
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   Social Icons
+========================================================= */
+
+.card-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.social-box {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #0d0d0d;
+  border: 0.5px solid #1f1f1f;
+  border-radius: 8px;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   Description
+========================================================= */
+
+.card-description {
+  font-family: 'Geist', sans-serif;
+  font-size: 16px;
+  line-height: 125%;
+  color: #777676;
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   Separator
+========================================================= */
+
+.card-separator {
+  width: 100%;
+  height: 1px;
+  margin-bottom: 20px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(139, 139, 139, 0) 0%,
+    #252525 45.99%,
+    rgba(139, 139, 139, 0) 100%
+  );
+}
+
+
+/* =========================================================
+   Tags
+========================================================= */
+
+.card-tags-frame {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: auto;
+}
+
+.tag-box {
+  padding: 8px 10px;
+  background: #1f1f1f;
+  border-radius: 4px;
+
+  font-family: 'Geist';
+  font-size: 14px;
+  color: #777676;
+}
+
+
+/* =========================================================
+   CTA Button
+========================================================= */
+
+.card-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 17px 27px;
+
+  background: #ffffff;
+  border: 0.5px solid #3e3e3e;
+  border-radius: 8px;
+
+  color: #000000;
+  text-decoration: none;
+
+  font-family: 'Geist';
+  font-weight: 500;
+  font-size: 16px;
+
+  transition:
+    transform 0.2s ease,
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+.card-cta:hover {
+  transform: scale(0.98);
+}
+
+
+/* =========================================================
+   CTA States
+========================================================= */
+
+.project-card .card-cta.active-cta {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ffffff !important;
+  opacity: 1 !important;
+}
+
+.project-card .card-cta.inactive-cta {
+  background-color: #0d0d0d !important;
+  color: #777676 !important;
+  border: 0.5px solid #3e3e3e !important;
+}
+
+
+/* =========================================================
+   Mobile Optimization
+========================================================= */
+
+@media (max-width: 768px) {
+  .project-slider-container {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+  }
+
+  .project-card {
+    flex: 0 0 85vw;
+    min-height: 520px;
+    padding: 6px;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+}
+
+
+/* =========================================================
+   Tablet Optimization
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .project-card {
+    flex: 0 0 50vw;
+  }
+}
+
+
+/* =========================================================
+   Small Mobile CTA Swap
+========================================================= */
+
+@media (max-width: 426px) {
+  .project-card .card-cta.active-cta {
+    background-color: #0d0d0d !important;
+    color: #777676 !important;
+    border: 0.5px solid #3e3e3e !important;
+  }
+
+  .project-card .card-cta.inactive-cta {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #ffffff !important;
+    opacity: 1 !important;
+  }
+}

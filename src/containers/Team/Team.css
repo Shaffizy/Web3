@@ -36,7 +36,7 @@
 }
 
 .active .member-image-wrap {
-  border: 2px solid #3b82f6;
+  border: 1px solid #ffffff;
 }
 
 .member-thumb {
@@ -150,6 +150,7 @@
     gap: 24px;
     width: 100%;
     overflow: hidden; /* Necessary for infinite loop */
+    margin: 0px auto;
   }
 
   .team-spotlight {
@@ -174,7 +175,7 @@
   }
 
   .member-wrapper {
-    flex: 0 0 130px; /* Set fixed width for loop items */
+    flex: 0 0 31%; /* Set fixed width for loop items */
   }
 
   .member-image-wrap {

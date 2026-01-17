@@ -24,14 +24,14 @@ const [activeTab, setActiveTab] = useState(navigationData[0].id);
             {/* Tab Navigation using navigationData object */}
             <div className="tabs-menu-2" role="tablist">
                 {navigationData.map((tab) => (
-                <button
+                <span
                     key={tab.id}
                     className={`tab-link ${activeTab === tab.id ? 'w--current' : ''}`}
                     onClick={() => setActiveTab(tab.id)}
                     role="tab"
                 >
                     {tab.label}
-                </button>
+                </span>
                 ))}
             </div>
 

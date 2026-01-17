@@ -3,6 +3,7 @@ import Star from './Star/Star';
 import Slider from './Slider/Slider';
 import ShardGrid from './ShardGrid/ShardGrid';
 import PartnerMarquee from './PartnerMarquee/PartnerMarquee';
+import NavMenu from './NavMenu/NavMenu';
 
 export {
     Navbar,
@@ -10,5 +11,6 @@ export {
     Slider,
     ShardGrid,
     PartnerMarquee,
+    NavMenu
 };
 

@@ -3,16 +3,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 82vh;
+    height: 72vh;
     gap: 1.5rem;
+    padding-top: 5%;
     z-index: 0;
 }
 #AboutUs{
-    height: 32vh;
-    margin-top: 14rem;
+    height: 42vh;
+    padding-top: 0%;
 }
 #Partners, #Services, #FAQ, #CaseStudies, #Team {
     height: 42vh;
+    padding-top: 0%;
 }
 @media (max-width: 769px) {
     .app__props {
@@ -130,7 +132,7 @@
     border: 0.5px solid #3E3E3E;
     box-shadow: 0px -4px 179.2px 52px rgba(255, 255, 255, 0.21), inset 0px -6px 6.3px rgba(66, 66, 66, 0.66);
     border-radius: 8px;
-
+    cursor: pointer;
     transition: 
     background-color 0.2s ease,
     border-color 0.2s ease,
@@ -149,6 +151,7 @@
     margin-left: 0.5rem;
 }
 @media (max-width: 768px) {
+
     .app__props-button{
         width: 8rem;
         height: 2.5rem;
@@ -160,10 +163,17 @@
     }
 }
 @media (max-width: 480px) {
+    /* .app__props{
+        height: 72vh;
+    } */
     .app__props-button span {
         width: 0.5rem;
         height: 0.5rem;
         margin-right: 2px;
+    }
+    #Partners, #Services, #FAQ, #CaseStudies, #Team {
+        height: fit-content;
+        padding-top: 5%;
     }
 }
 .app__props-button p{

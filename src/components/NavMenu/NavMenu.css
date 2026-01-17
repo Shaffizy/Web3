@@ -1,0 +1,65 @@
+.app__navbar-menu-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10000;
+  padding: 3rem;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.2); /* black with 70% opacity */
+  backdrop-filter: blur(10px); /* optional: adds a frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.menu-close-icon {
+  width: 35px;
+  height: 35px;
+  color: var(--white-color); 
+}
+
+.app__navbar-menu-overlay svg {
+  width: 35px;
+  height: 35px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.app__navbar-menu-overlay svg:hover {
+  transform: scale(1.1);
+}
+
+.app__navbar-menu-overlay ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.app__navbar-menu-overlay ul li {
+  margin: 1.5rem 0;
+}
+
+.app__navbar-menu-overlay ul li a {
+  color: var(--white-color);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.app__navbar-menu-overlay ul li a:hover {
+  color: #777; /* Subtle hover color */
+}
+
+

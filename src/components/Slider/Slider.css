@@ -63,7 +63,7 @@
 }
 .stat-card:hover {
   border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
   color: var(--white-color);
 }
 /* Keep content above glow */
@@ -114,6 +114,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-variant-numeric: tabular-nums;
 }
 @media (max-width:1025px) {
   .stat-card h2 {

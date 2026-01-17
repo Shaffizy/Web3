@@ -50,7 +50,6 @@
 .tab-link.w--current {
   color: var(--main-white);
   background-image: radial-gradient(circle farthest-side at 50% 300%, #5f5f5f, transparent);
-  border: 0.5px solid #000;
   border-bottom: 1px solid #fff; /* Highlight bottom border */
 }
 /* GRID LAYOUT */
@@ -110,7 +109,7 @@
   padding: 12px;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 100;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
   transition: transform 0.2s ease;
   z-index: 1;
@@ -162,7 +161,7 @@
 }
 .card-services:hover {
   border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
 }
 
 .div-block-4 img {
@@ -218,7 +217,13 @@
     padding: 20px;
     grid-template-columns: repeat(2, 1fr); 
     grid-gap: 16px;
-  }
+    transform: rotate(180deg);
+}
+
+/* flip children back so text isn’t upside down */
+.div-block-3 > * {
+  transform: rotate(180deg);
+}
 
   /* 2. Reset the Hero Card spanning */
   .div-block-6 { 

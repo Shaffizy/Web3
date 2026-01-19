@@ -20,7 +20,6 @@ const Case = () => {
 useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray(cardsRef.current?.children || []);
-        console.log('GSAP cards found:', cards.length);
 
       
       const loop = horizontalLoop(cards, {
@@ -47,7 +46,6 @@ useLayoutEffect(() => {
         const handleTouchEnd = () => {
         const delta = touchStartX.current - touchCurrentX.current;
 
-        console.log('touch delta:', delta);
 
         if (Math.abs(delta) < 30) return;
 

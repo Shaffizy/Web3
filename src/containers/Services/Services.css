@@ -285,7 +285,9 @@
     transparent 100%);
  
   }
-
+  .tab-link{
+    text-align: center;
+  }
     /* Active Tab Style from your code */
   .tab-link.w--current {
     background-image: radial-gradient(

@@ -5,8 +5,7 @@ import { images } from '../../constants';
 
 const Navbar = ({ isVisible, setToggle }) => {
   
-  // Debugging logs
-  console.log("%cNavbar Render", "color: cyan", { isVisible });
+  
 
   const handleMenuOpen = () => {
     console.log("%cMenu Button Clicked!", "color: yellow; font-weight: bold");

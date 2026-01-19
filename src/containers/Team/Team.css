@@ -21,6 +21,10 @@
   gap: 20px;
 }
 
+.pagination-footer {
+    display: none;
+  }
+
 .member-wrapper {
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -137,6 +141,7 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+
 @media (max-width: 991px) {
   /* .team-layout { grid-template-columns: 1fr; width: 95%; }
   .spotlight-frame { height: 450px; } */
@@ -144,9 +149,12 @@
 /* ... Existing Desktop Styles ... */
 
 @media (max-width: 676px) {
+  .pagination-footer {
+    display: flex;
+  }
   .team-layout {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 24px;
     width: 100%;
     overflow: hidden; /* Necessary for infinite loop */
@@ -182,3 +190,6 @@
     margin-bottom: 0;
   }
 }
+
+
+

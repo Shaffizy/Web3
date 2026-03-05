@@ -7,7 +7,7 @@
   justify-content: space-between;
   border: 0.4px solid var(--border);
   border-radius: 1rem;
-  padding: 0.2rem 2rem;
+  padding: 0.2rem 0.8rem;
   margin: 1rem auto;
   background: rgba(0, 0, 0, 0.1); /* black with 70% opacity */
   backdrop-filter: blur(12px); /* optional: adds a frosted glass effect */
@@ -69,10 +69,10 @@
 .app__navbar-links li a:hover {
   color: var(--white-color);
   text-shadow:
-    0 0 8px rgba(255, 255, 255, 0.6),
-    0 0 16px rgba(255, 255, 255, 0.8),
-    0 0 30px rgba(255, 255, 255, 1),
-    0 0 45px rgba(255, 255, 255, 0.9);
+    0 0 8px var(--white-color),
+    0 0 16px var(--white-color),
+    0 0 30px var(--white-color),
+    0 0 45px var(--white-color);
 }
 @media screen and (max-width: 900px) {
   .app__navbar-links {
@@ -116,7 +116,7 @@
   transition: color 0.2s ease;
 }
 .app__navbar-button:hover span {
-  color: #ffffff;
+  color: var(--white-color);
 }
 @media screen and (max-width: 48rem) {
   .app__navbar-button {

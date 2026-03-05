@@ -9,11 +9,11 @@
     z-index: 0;
 }
 #AboutUs{
-    height: 42vh;
+    height: 35vh;
     padding-top: 0%;
 }
 #Partners, #Services, #FAQ, #CaseStudies, #Team {
-    height: 42vh;
+    height: 38vh;
     padding-top: 0%;
 }
 @media (max-width: 769px) {
@@ -36,7 +36,6 @@
     font-style: normal;
     line-height: 100%;
     letter-spacing: -0.04em;
-    color: #F4F4F4;
     text-shadow: 0px 0px 42.7px #FFFFFF;
     flex: none;
     order: 0;
@@ -67,7 +66,7 @@
     font-family: 'Geist';
     font-style: normal;
     color: var(--gray-color);
-    font-weight: 700;
+    font-weight: 600;
     font-size: 4rem;
     line-height: 100%;
     width: 70.2rem;
@@ -130,7 +129,10 @@
     height: 3rem;
     background: var(--white-color);
     border: 0.5px solid #3E3E3E;
-    box-shadow: 0px -4px 179.2px 52px rgba(255, 255, 255, 0.21), inset 0px -6px 6.3px rgba(66, 66, 66, 0.66);
+    box-shadow: 
+        0 0 40px rgba(47, 251, 4, 0.4),
+        0 0 120px rgba(47, 251, 4, 0.6),
+        inset 0 0 15px rgba(47, 251, 4, 0.9);
     border-radius: 8px;
     cursor: pointer;
     transition: 

@@ -1,27 +1,64 @@
-import React from 'react'
-import './Star.css'
+import React, { useMemo } from 'react';
+import './Star.css';
 
 const Star = () => {
-    const stars = Array.from({ length: 100 }, () => ({
-    top: Math.random() * window.innerHeight,
-    left: Math.random() * window.innerWidth,
-    delay: Math.random() * 2
-  }));
+  // 1. Regular Twinkling Stars
+  const stars = useMemo(() => Array.from({ length: 120 }, () => ({
+    top: `${Math.random() * 100}vh`,
+    left: `${Math.random() * 100}vw`,
+    delay: Math.random() * 4,
+    size: Math.random() * 2 + 1
+  })), []);
+
+  // 2. Green Shooting Stars
+  const shootingStars = useMemo(() => Array.from({ length: 20 }, () => ({
+    top: `${Math.random() * 80}vh`, 
+    left: `${Math.random() * 120}vw`,
+    delay: Math.random() * 15, 
+    duration: Math.random() * 1.5 + 1.5 
+  })), []);
+
   return (
     <div className="star-bg">
-        {stars.map((star, i) => (
-          <div
-            key={i}
-            className="star"
-            style={{
-              top: `${star.top}px`,
-              left: `${star.left}px`,
-              animationDelay: `${star.delay}s`
-            }}
-          />
-        ))}
+      {/* Volumetric Gas / Nebula - Two specific clouds */}
+      <div className="nebula-container">
+        <div className="gas-cloud cloud-left"></div>
+        <div className="gas-cloud cloud-right"></div>
       </div>
-  )
-}
 
-export default Star
+      {/* Twinkling Stars */}
+      {stars.map((star, i) => (
+        <div
+          key={`star-${i}`}
+          className="star"
+          style={{
+            top: star.top,
+            left: star.left,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            animationDelay: `${star.delay}s`
+          }}
+        />
+      ))}
+
+      {/* Shooting Stars */}
+      {shootingStars.map((shooting, i) => (
+        <div
+          key={`shooting-${i}`}
+          className="shooting-star"
+          style={{
+            top: shooting.top,
+            left: shooting.left,
+            animationDuration: `${shooting.duration}s`,
+            animationDelay: `${shooting.delay}s`
+          }}
+        >
+          <div className="shooting-star-head"></div>
+          <div className="shooting-star-tail"></div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Star;

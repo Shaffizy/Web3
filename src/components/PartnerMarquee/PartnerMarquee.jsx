@@ -4,7 +4,26 @@ import './PartnerMarquee.css';
 
 const PartnerMarquee = () => {
   // Organizing your imported images into an array
-  const partners = [images.medusa, images.httpool, images.tensor, images.lingo, images.adroll];
+  const partners = [
+  images.adroll,
+  images.bingAds,
+  images.bloomberg,
+  images.coinDesk,
+  images.coinTelegraph,
+  images.coincodex,
+  images.cryptoCompare,
+  images.cryptobrowser,
+  images.decrypt,
+  images.httpool,
+  images.launchMyNFT,
+  images.lingo,
+  images.medusa,
+  images.okx,
+  images.propellerAds,
+  images.semrush,
+  images.tensor,
+  images.yahooFinance
+];
 
   // We render the list twice inside the track to create the infinite loop
   const MarqueeRow = ({ direction }) => (

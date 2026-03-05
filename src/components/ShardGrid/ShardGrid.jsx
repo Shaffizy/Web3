@@ -22,7 +22,7 @@ const ShardGrid = () => {
         {/* CENTER LOGO */}
         <div className="middle-block">
           <img 
-            src="https://cdn.prod.website-files.com/6953b51a00729d30773ab884/6954446316bd1b91259db5b7_b-logo-center.svg" 
+            src={images.logoBig}
             alt="InsightBlitz Logo" 
           />
         </div>

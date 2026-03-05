@@ -13,7 +13,8 @@ const TabContent = ({ data }) => {
             style={{ 
             backgroundImage: `url(${images.servicesbg})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center',
+            border:'none',
           }}
             >
           <div className="div-block-7">

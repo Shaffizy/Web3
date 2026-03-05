@@ -24,7 +24,7 @@
 }
 
 .footer-group-title {
-  color: #fff;
+  color: var(--white-color);
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 24px;

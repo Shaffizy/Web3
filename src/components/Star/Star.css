@@ -1,25 +1,124 @@
-/* Global star background */
+/* =========================================================
+   Global Container
+========================================================= */
 .star-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: fit-content;
-  pointer-events: none;
-  z-index: 0;
+  height: 100vh;
+  pointer-events: none; /* Lets clicks pass through to your site */
+  z-index: 0; /* Keeps it behind content */
+  overflow: hidden;
+  background-color: transparent; 
 }
 
+/* =========================================================
+   Realistic Gas Clouds (Nebula) - Left & Right
+========================================================= */
+.nebula-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: blur(90px); /* Massive blur turns the divs into pure gas */
+}
+
+.gas-cloud {
+  position: absolute;
+  border-radius: 50%;
+  /* Deep, glowing green that fades smoothly to transparent */
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.15) 60%, rgba(0, 255, 0, 0) 90%);
+}
+
+/* Left Cloud */
+.cloud-left {
+  width: 60vw;
+  height: 60vh;
+  left: -20vw; /* Bleeds off the left edge */
+  top: -10vh;
+  /* 14 seconds duration */
+  /* animation: float-left 14s infinite ease-in-out alternate; */
+}
+
+/* Right Cloud */
+.cloud-right {
+  width: 70vw;
+  height: 70vh;
+  right: -30vw; /* Bleeds off the right edge */
+  bottom: -10vh;
+  /* 19 seconds duration (Will never sync with the 14s left cloud) */
+  /* animation: float-right 19s infinite ease-in-out alternate; */
+}
+
+/* Asynchronous Up and Down Animations */
+@keyframes float-left {
+  0% { transform: translateY(0) scale(1); opacity: 0.4; }
+  100% { transform: translateY(20vh) scale(1.1); opacity: 0.8; } /* Moves Down */
+}
+
+@keyframes float-right {
+  0% { transform: translateY(0) scale(1.1); opacity: 0.7; }
+  100% { transform: translateY(-25vh) scale(1); opacity: 0.3; } /* Moves Up */
+}
+
+/* =========================================================
+   Twinkling Stars
+========================================================= */
 .star {
-  width: 2px;
-  height: 2px;
   background: white;
   border-radius: 50%;
   position: absolute;
-  animation: twinkle 2s infinite ease-in-out alternate;
+  animation: twinkle 3s infinite ease-in-out alternate;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
 }
 
 @keyframes twinkle {
-  0% { opacity: 0.2; }
-  50% { opacity: 1; }
-  100% { opacity: 0.2; }
+  0% { opacity: 0.1; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.1; transform: scale(0.8); }
+}
+
+/* =========================================================
+   Green Shooting Stars
+========================================================= */
+.shooting-star {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  transform: rotate(-35deg);
+  opacity: 0;
+  animation: shoot infinite linear;
+}
+
+.shooting-star-head {
+  width: 3px;
+  height: 3px;
+  background: #00FF00; 
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #ffffff;
+  z-index: 2;
+}
+
+.shooting-star-tail {
+  width: 120px; 
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 255, 0, 0.9));
+  margin-left: -2px;
+}
+
+@keyframes shoot {
+  0% {
+    transform: rotate(-35deg) translateX(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-35deg) translateX(-150vw);
+    opacity: 0;
+  }
 }

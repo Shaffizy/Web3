@@ -1,7 +1,6 @@
 .partner-bottom {
   width: 100%;
   background-color: transparent;
-  padding: 80px 80px;
   display: flex;
   flex-direction: column;
   gap: 80px;
@@ -62,7 +61,8 @@
   width: auto;
   flex-shrink: 0;
   /* Darkened base state to match your screenshot */
-  filter: brightness(0.4) grayscale(1);
+  /* filter: brightness(0.4) grayscale(1); */
+  filter: brightness(1) grayscale(0) drop-shadow(0 0 8px #282828);
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 @media (max-width: 456px) {
@@ -73,7 +73,7 @@
 
 .logo-image:hover {
   /* Subtle glow and full color on hover */
-  filter: brightness(1) grayscale(0) drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+  filter: brightness(1) grayscale(0) drop-shadow(0 0 8px var(--white-color) );
   transform: scale(1.05);
 }
 

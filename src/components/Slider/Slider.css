@@ -54,15 +54,15 @@
     transparent 70%
   );
 
-  top: 20%;
+  top: 40%;
   left: 15%;
 
-  filter: blur(30px);
+  /* filter: blur(30px); */
   opacity: 0.6;
   z-index: 0;
 }
 .stat-card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--white-color);
   /* transform: translateY(-5px); */
   color: var(--white-color);
 }
@@ -107,7 +107,7 @@
   background: linear-gradient(
     90deg,
     var(--primary-color) 0%,
-    #ffffff 50%,
+    var(--white-color) 50%,
     var(--secondary-color) 100%
   );
 
@@ -130,8 +130,8 @@
 .stat-card p{
     font-weight: 400;
     font-size: 24px;
-    color: var(--lightGray-color);
-    font-weight: 600;
+    color: #155907;
+    font-weight: 500;
 }
 @media (max-width:1025px) {
   .stat-card p {

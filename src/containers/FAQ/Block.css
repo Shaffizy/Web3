@@ -62,7 +62,7 @@
   width: clamp(180px, 25vw, 244px);
   text-align: center;
   padding: 12px 24px;
-  background-color: #ffffff;
+  background-color: var(--white-color);
   color: #000000;
   text-decoration: none;
   border-radius: 8px;
@@ -74,7 +74,7 @@
 }
 
 .link:hover {
-  background-color: #f0f0f0;
+  background-color: var(--white-color);
   transform: translateY(-2px);
 }
 

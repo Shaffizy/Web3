@@ -1,195 +1,252 @@
+/* =========================================================
+   Global Team Section
+========================================================= */
 .team-section {
   padding: 0;
   background-color: transparent;
   color: #fff;
+  font-family: 'Geist', sans-serif; /* Adjust to your project's font */
 }
 
 .team-layout {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   width: 90%;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 60px auto;
-  gap: 40px;
-  align-items: start;
+  gap: 30px;
+  /* Change from 'stretch' to 'start' so the right side can grow taller independently */
+  align-items: start; 
+  height: fit-content;
 }
 
-/* Grid of Team Members */
+/* =========================================================
+   Grid of Team Members (Left Side)
+========================================================= */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 16px;
 }
-
-.pagination-footer {
-    display: none;
-  }
 
 .member-wrapper {
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
+}
+
+.member-wrapper:hover {
+  transform: translateY(-2px);
 }
 
 .member-image-wrap {
   position: relative;
-  aspect-ratio: 1/1;
-  border-radius: 12px;
+  aspect-ratio: 1 / 1.1; /* Matches the slightly tall boxes in the image */
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid #1a1a1a;
-  margin-bottom: 10px; /* Space for text below */
+  border: 1.5px solid #1a1a1a;
+  background-color: #0d0d0d;
+  transition: all 0.3s ease;
 }
 
-.active .member-image-wrap {
-  border: 1px solid #ffffff;
+/* Bright green border for active state */
+.member-wrapper.active .member-image-wrap {
+  border-color: #00FF00; /* Adjust to your specific neon green hex if needed */
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.05);
 }
 
 .member-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
+  object-position: top center; /* CRITICAL: Ensures faces aren't cut off */
+  filter: grayscale(100%) brightness(0.7); /* Darker and gray when inactive */
+  transition: filter 0.4s ease;
 }
 
-.active .member-thumb {
-  filter: grayscale(0%);
+.member-wrapper.active .member-thumb {
+  filter: grayscale(0%) brightness(1);
 }
 
-/* Names and Roles Underneath */
-.member-name-small {
-  font-size: 14px;
-  font-weight: 500;
-  margin: 0;
-  color: #fff;
-}
-
-.member-role-small {
-  font-size: 11px;
-  color: #666;
-  margin: 2px 0 0 0;
-}
-
+/* Pill-shaped Tags inside Thumbnails */
 .member-tag {
   position: absolute;
-  bottom: 8px;
-  left: 8px;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 9px;
-  color: #aaa;
-  border: 1px solid #333;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border-radius: 20px; /* Fully rounded edges */
+  font-size: 10px;
+  font-weight: 500;
+  color: #a0a0a0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
 }
 
-/* Spotlight Section with Fading Dark */
+/* =========================================================
+   Spotlight Section (Right Side)
+========================================================= */
+.team-spotlight {
+  width: 100%;
+  height: 100%;
+  /* Removed height: 100% so it respects the frame's height */
+}
+
 .spotlight-frame {
   position: relative;
   width: 100%;
+  
+  /* Use clamp for a responsive fixed height! 
+     It will never be smaller than 550px, 
+     it prefers 75vh (75% of the screen height), 
+     and will max out at 800px */
+  /* height: clamp(550px, 94vh, 749px);    */
   height: 100%;
-  border-radius: 0.5px;
+  border-radius: 20px;
   overflow: hidden;
-  background: #000;
+  background: #050505;
+  border: 1px solid #1a1a1a;
 }
 
 .spotlight-img {
   width: 100%;
   height: 100%;
-  /* object-fit: cover; */
+  object-fit: cover;
+  /* Anchors the image to the top/center so faces are always visible 
+     even when the box gets tall */
+  object-position: center 10%; 
 }
 
 .spotlight-content {
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
   padding: 40px;
-  /* Deep Fading Gradient */
-  background: linear-gradient(to top, 
-    rgba(0,0,0,1) 50%, 
-    rgba(0,0,0,0.8) 60%, 
-    rgba(0,0,0,0) 100%);
+  
+  /* Deep, smooth gradient fading into pure black at the bottom */
+  background: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 1) 0%, 
+    rgba(0, 0, 0, 0.9) 25%, 
+    rgba(0, 0, 0, 0.4) 60%, 
+    transparent 100%
+  );
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  height: 30%;
+  height: 50%; /* Taller height for a smoother fade */
 }
 
 .spotlight-text h3 {
   font-size: 32px;
+  font-weight: 600;
   margin: 0;
   letter-spacing: -0.5px;
+  color: #00FF00; /* Neon green to match the image */
 }
 
 .spotlight-text p {
   color: #888;
   font-size: 16px;
-  margin: 5px 0 0 0;
+  margin: 6px 0 0 0;
+  font-weight: 400;
 }
 
+/* Twitter / X Button */
 .x-link {
   width: 45px;
   height: 45px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid #333;
-  border-radius: 10px;
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.x-link img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
 }
 
 .x-link:hover {
   background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
 }
 
+/* =========================================================
+   Mobile Optimization (Embla Carousel)
+========================================================= */
+.pagination-footer {
+  display: none;
+}
 
 @media (max-width: 991px) {
-  /* .team-layout { grid-template-columns: 1fr; width: 95%; }
-  .spotlight-frame { height: 450px; } */
+  .team-layout {
+    gap: 20px;
+  }
+  .spotlight-text h3 { font-size: 28px; }
 }
-/* ... Existing Desktop Styles ... */
 
-@media (max-width: 676px) {
+@media (max-width: 768px) {
   .pagination-footer {
     display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
   }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #333;
+    transition: 0.3s;
+  }
+  
+  .dot.active {
+    width: 24px;
+    border-radius: 10px;
+    background: #00FF00;
+  }
+
   .team-layout {
     display: flex;
-    flex-direction: column-reverse;
-    gap: 24px;
+    flex-direction: column-reverse; /* Puts spotlight on top */
     width: 100%;
-    overflow: hidden; /* Necessary for infinite loop */
-    margin: 0px auto;
+    margin: 30px auto;
   }
 
   .team-spotlight {
-    order: 1; /* Force to top */
-    width: 90%;
-    margin: auto;
+    width: 100%;
+    padding: 0 5%;
   }
 
   .spotlight-frame {
-    height: 450px;
-    margin: 0 auto;
+    height: 400px;
+    min-height: unset;
+  }
+
+  .team-grid-wrapper {
+    overflow: hidden; /* For Embla */
+    width: 100%;
+    padding-left: 5%;
   }
 
   .team-grid {
-    order: 2; /* Force to bottom */
-    display: flex; /* Change from Grid to Flex for the loop */
+    display: flex; /* Override grid for horizontal slider */
     flex-wrap: nowrap;
-    gap: 15px;
+    gap: 12px;
     padding: 10px 0;
     cursor: grab;
-    touch-action: pan-y; /* Allows page scroll while swiping slider */
   }
 
   .member-wrapper {
-    flex: 0 0 31%; /* Set fixed width for loop items */
-  }
-
-  .member-image-wrap {
-    margin-bottom: 0;
+    flex: 0 0 40%; /* Shows 2.5 cards on screen to hint at scrolling */
   }
 }
-
-
-

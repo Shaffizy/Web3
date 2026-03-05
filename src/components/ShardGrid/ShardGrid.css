@@ -53,10 +53,10 @@
 }
 
 .middle-block img { 
-   height: auto; 
+   height: 95px; 
   }
-.bottom-left-block img{
-    
+.middle-block {
+    padding: 60px 50px;
 }
 
 .text-content {
@@ -85,7 +85,7 @@
     background: linear-gradient(
         90deg,
         var(--primary-color) 0%,
-        #ffffff 50%,
+        var(--white-color) 50%,
         var(--secondary-color) 100%
     );
 
@@ -110,6 +110,8 @@
     font-size: 1.6rem; 
     color: var(--white-color);
     width: 354px;
+    line-height: 130%;
+    font-weight: 600;
 }
 .shard p { color: #888; 
     font-size: 1rem; 
@@ -119,12 +121,12 @@
 }
 
 .btn {
-    background: white;
+    background: var(--white-color);
     color: black;
     padding: 17px 27px;
     border-radius: 0.5rem;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 1rem;
     margin-top: 20px;
     width: fit-content;

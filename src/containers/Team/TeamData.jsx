@@ -1,12 +1,92 @@
 import { images } from '../../constants';
 
 export const teamData = [
-  { id: 1, name: "Jin Woo", role: "Chief Executive Officer", abbr: "CEO", img: images.worker1, twitter: "#" },
-  { id: 2, name: "Ace Dela Cuesta", role: "Chief Operating Officer", abbr: "COO", img: images.worker2, twitter: "#" },
-  { id: 3, name: "Liam Chen", role: "Business Development", abbr: "Business Development", img: images.worker3, twitter: "#" },
-  { id: 4, name: "Noah Smith", role: "Lead Web Developer", abbr: "Web Developer", img: images.worker4, twitter: "#" },
-  { id: 5, name: "Elias Vance", role: "Community Manager", abbr: "Community Manager", img: images.worker5, twitter: "#" },
-  { id: 6, name: "Soren Kai", role: "Collaboration Manager", abbr: "Collaboration Manager", img: images.worker6, twitter: "#" },
-  { id: 7, name: "Kaelen Rivers", role: "Influencer Manager", abbr: "Influencer Manager", img: images.worker7, twitter: "#" },
-  { id: 8, name: "Jace Thorne", role: "Growth Lead", abbr: "Growth Lead", img: images.worker2, twitter: "#" },
+  { 
+    id: 1, 
+    name: "Jefferson Valorozo", 
+    role: "CEO, Founder", 
+    abbr: "CEO", 
+    img: images.jeffersonValorozo, 
+    twitter: "#" 
+  },
+  { 
+    id: 2, 
+    name: "Ace Gabriel Dela Cuesta", 
+    role: "Head of Operations", 
+    abbr: "COO", 
+    img: images.aceGabriel, 
+    twitter: "#" 
+  },
+  { 
+    id: 3, 
+    name: "Abraham Aguilar", 
+    role: "Head of Spaces", 
+    abbr: "Head of Spaces", 
+    img: images.abrahamAguilar, 
+    twitter: "#" 
+  },
+  { 
+    id: 4, 
+    name: "Evan Stanfield", 
+    role: "Head of Web3 - Advisory", 
+    abbr: "Advisory", 
+    img: images.evanStanfield, 
+    twitter: "#" 
+  },
+  { 
+    id: 5, 
+    name: "Kreezhia Salazar", 
+    role: "Product Manager", 
+    abbr: "PM", 
+    img: images.kreezhiaSalazar, 
+    twitter: "#" 
+  },
+  { 
+    id: 6, 
+    name: "Ebukaar Chinemerem", 
+    role: "KOL Manager", 
+    abbr: "KOL Manager", 
+    img: images.ebukaarChinemerem, 
+    twitter: "#" 
+  },
+  { 
+    id: 7, 
+    name: "Gavter Dausen", 
+    role: "Partnership Manager", 
+    abbr: "Partnerships", 
+    img: images.gavterDausen, 
+    twitter: "#" 
+  },
+  { 
+    id: 8, 
+    name: "Carlos Decin", 
+    role: "Community Manager", 
+    abbr: "CM", 
+    img: images.carlosDecin, 
+    twitter: "#" 
+  },
+  { 
+    id: 9, 
+    name: "Kriscel Prila", 
+    role: "Community Manager", 
+    abbr: "CM", 
+    img: images.kriscelPrila, 
+    twitter: "#" 
+  },
+  { 
+    id: 10, 
+    name: "Mike Lazarito", 
+    role: "Community Manager", 
+    abbr: "CM", 
+    img: images.mikeLazarito, 
+    twitter: "#" 
+  },
+  { 
+    id: 11, 
+    name: "John Raelli Villanueva", 
+    role: "Social Media Marketer", 
+    abbr: "SMM", 
+    img: images.johnRaelli, 
+    twitter: "#" 
+  },
 ];

@@ -1,86 +1,99 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'; // Added useState
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { projectData } from './ProjectData';
 import Props from '../../components/Props/Props';
 import ProjectCard from './ProjectCard';
 import gsap from 'gsap';
+import { images } from '../../constants';
 
 import './Case.css';
 
 const Case = () => {
   const scrollRef = useRef(null);
   const cardsRef = useRef(null);
-
   const loopRef = useRef(null);
+
   const touchStartX = useRef(0);
   const touchCurrentX = useRef(0);
 
-  const [activeIndex, setActiveIndex] = useState(0); // Tracking index for dots
+  // Default to 1 because if card 0 is on the left edge, card 1 is in the middle
+  const [activeIndex, setActiveIndex] = useState(1);
 
-// Inside your useLayoutEffect in Case.jsx
-useLayoutEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray(cardsRef.current?.children || []);
 
-      
+      if (cards.length === 0) return;
+
       const loop = horizontalLoop(cards, {
         paused: true,
         repeat: -1,
         paddingRight: 30,
-        onIndexChange: (index) => {
-          // Keep your center spotlight logic
-          const middleIndex = (index + 1) % projectData.length;
+        onIndexChange: (leftmostIndex) => {
+          // Logic: The loop reports the item touching the left edge. 
+          // To highlight the middle card, we target the SECOND card.
+          const middleIndex = (leftmostIndex + 1) % cards.length;
           setActiveIndex(middleIndex);
         }
       });
 
       loopRef.current = loop;
-
-        const handleTouchStart = (e) => {
-        touchStartX.current = e.touches[0].clientX;
-        };
-
-        const handleTouchMove = (e) => {
-        touchCurrentX.current = e.touches[0].clientX;
-        };
-
-        const handleTouchEnd = () => {
-        const delta = touchStartX.current - touchCurrentX.current;
-
-
-        if (Math.abs(delta) < 30) return;
-
-        delta > 0
-            ? loop.next({ duration: 0.6, ease: 'power1.inOut' })
-            : loop.prev({ duration: 0.6, ease: 'power1.inOut' });
-        };
-
+      
+      // Ensure the state matches the loop's initial position on mount
+      setActiveIndex((loop.current() + 1) % cards.length);
 
       const element = scrollRef.current;
-      // 'passive: true' ensures smooth vertical page scrolling remains unaffected
+
+      const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX;
+      };
+
+      const handleTouchMove = (e) => {
+        touchCurrentX.current = e.touches[0].clientX;
+      };
+
+      const handleTouchEnd = () => {
+        const delta = touchStartX.current - touchCurrentX.current;
+
+        // 30px threshold to prevent accidental swipes on taps
+        if (Math.abs(delta) < 30) return; 
+
+        delta > 0
+          ? loop.next({ duration: 0.6, ease: 'power1.inOut' })
+          : loop.prev({ duration: 0.6, ease: 'power1.inOut' });
+      };
+
+      // Passive: true ensures smooth vertical page scrolling isn't blocked
       element.addEventListener('touchstart', handleTouchStart, { passive: true });
       element.addEventListener('touchmove', handleTouchMove, { passive: true });
       element.addEventListener('touchend', handleTouchEnd);
-      
 
-      return () =>{
+      return () => {
         element.removeEventListener('touchstart', handleTouchStart);
         element.removeEventListener('touchmove', handleTouchMove);
         element.removeEventListener('touchend', handleTouchEnd);
-       }
-      
+      };
     }, scrollRef);
 
     return () => ctx.revert();
   }, []);
 
   const handleNext = () => {
-    loopRef.current.next({ duration: 0.4, ease: "power1.inOut" });
+    loopRef.current?.next({ duration: 0.4, ease: "power1.inOut" });
   };
 
   const handlePrev = () => {
-    loopRef.current.prev({ duration: 0.4, ease: "power1.inOut" });
-  
-};
+    loopRef.current?.prev({ duration: 0.4, ease: "power1.inOut" });
+  };
+
+  const handleDotClick = (targetIndex) => {
+    if (!loopRef.current) return;
+    
+    // Logic: If we want targetIndex to be in the middle (2nd position),
+    // the item on the left edge must be the one right before it.
+    // The '+ projectData.length' safely handles negative numbers for index 0.
+    const leftEdgeIndex = (targetIndex - 1 + projectData.length) % projectData.length;
+    loopRef.current.toIndex(leftEdgeIndex, { duration: 0.4, ease: "power1.inOut" });
+  };
 
   return (
     <section className='Case' id="Projects">
@@ -97,22 +110,25 @@ useLayoutEffect(() => {
 
       <div className="case-slider-wrapper" ref={scrollRef}>
         <div className="slider-navigation">
-          <button className="nav-arrow prev" onClick={handlePrev}><img src="https://cdn.prod.website-files.com/6953b51a00729d30773ab884/69565d349ac533d993d115bb_arrow-left.svg" loading="lazy" alt=""></img></button>
-          <button className="nav-arrow next" onClick={handleNext}><img src="https://cdn.prod.website-files.com/6953b51a00729d30773ab884/69565d40580311d2f59569e7_arrow-right.svg" loading="lazy" alt=""></img></button>
+          <button className="nav-arrow prev" onClick={handlePrev}>
+            <img src={images.back} loading="lazy" alt="" />
+          </button>
+          <button className="nav-arrow next" onClick={handleNext}>
+            <img src={images.add} loading="lazy" alt="" />
+          </button>
         </div>
 
         <ProjectCard 
-            ref={cardsRef} 
-            activeIndex={activeIndex} // THIS LINE IS MISSING IN YOUR CODE
+          ref={cardsRef} 
+          activeIndex={activeIndex} 
         />
 
         <div className="pagination-footer">
           {projectData.map((_, i) => (
             <div 
               key={i} 
-              // Dot turns white when activeIndex matches loop index
               className={`dot ${activeIndex === i ? 'active' : ''}`} 
-              onClick={() => loopRef.current.toIndex(i - 1, { duration: 0.4, ease: "power1.inOut" })}
+              onClick={() => handleDotClick(i)}
             />
           ))}
         </div>
@@ -121,7 +137,7 @@ useLayoutEffect(() => {
   );
 };
 
-// --- Helper Function (Added onIndexChange support) ---
+// --- Clean GSAP Horizontal Loop Helper ---
 function horizontalLoop(items, config) {
   items = gsap.utils.toArray(items);
   config = config || {};
@@ -143,8 +159,10 @@ function horizontalLoop(items, config) {
       return xPercents[i];
     }
   });
+  
   gsap.set(items, {x: 0});
   totalWidth = items[length-1].offsetLeft + xPercents[length-1] / 100 * widths[length-1] - startX + items[length-1].offsetWidth * gsap.getProperty(items[length-1], "scaleX") + (parseFloat(config.paddingRight) || 0);
+  
   for (i = 0; i < length; i++) {
     item = items[i];
     curX = xPercents[i] / 100 * widths[i];
@@ -155,33 +173,35 @@ function horizontalLoop(items, config) {
       .add("label" + i, distanceToStart / pixelsPerSecond);
     times[i] = distanceToStart / pixelsPerSecond;
   }
-function toIndex(index, vars) {
+
+  function toIndex(index, vars) {
     vars = vars || {};
     (Math.abs(index - curIndex) > length / 2) && (index += index > curIndex ? -length : length);
     let newIndex = gsap.utils.wrap(0, length, index),
         time = times[newIndex];
-    if (time < tl.time() === index > curIndex) {
+    if (time > tl.time() !== index > curIndex) {
         vars.modifiers = {time: gsap.utils.wrap(0, tl.duration())};
-        time = tl.duration() * (index > curIndex ? 1 : -1) + time;
+        time += tl.duration() * (index > curIndex ? 1 : -1);
     }
-
-    // UPDATE THIS PART:
+    
     curIndex = newIndex; 
     vars.overwrite = true;
 
-    // This MUST happen before the tween returns to update React immediately
+    // Report index change immediately for UI sync
     if (config.onIndexChange) {
         config.onIndexChange(curIndex);
     }
 
     return tl.tweenTo(time, vars);
-}
+  }
+  
   tl.next = vars => toIndex(curIndex + 1, vars);
   tl.prev = vars => toIndex(curIndex - 1, vars);
   tl.current = () => curIndex;
   tl.toIndex = (index, vars) => toIndex(index, vars);
   tl.times = times;
   tl.progress(1, true).progress(0, true);
+  
   if (config.reversed) {
     tl.vars.onReverseComplete();
     tl.reverse();
